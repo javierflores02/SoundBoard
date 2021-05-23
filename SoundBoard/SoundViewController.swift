@@ -7,10 +7,14 @@ class SoundViewController: UIViewController {
     @IBOutlet weak var reproducirButton: UIButton!
     @IBOutlet weak var nombreTextField: UITextField!
     @IBOutlet weak var agregarButton: UIButton!
+    @IBOutlet weak var duracionTextField: UITextField!
     
     var grabarAudio:AVAudioRecorder?
     var reproducirAudio:AVAudioPlayer?
     var audioURL:URL?
+    
+    var counter = 0
+    var timer = Timer()
     
     func configurarGrabacion() {
         do {
@@ -51,22 +55,35 @@ class SoundViewController: UIViewController {
         agregarButton.isEnabled = false
     }
     
+    func segundosFormato (_ seconds : Int) -> (String, String, String) {
+        let segundos:String = String(format: "%02d",seconds / 3600)
+        let minutos:String = String(format: "%02d",(seconds % 3600) / 60)
+        let horas:String = String(format: "%02d",(seconds % 3600) % 60)
+      return (segundos, minutos, horas)
+    }
+    
     @IBAction func grabarTapped(_ sender: Any) {
         if grabarAudio!.isRecording {
             // Detener grabacion
             grabarAudio?.stop()
-
+            
             // Cambiar texto del botòn grabar
             grabarButton.setTitle("Grabar", for: .normal)
             reproducirButton.isEnabled = true
             agregarButton.isEnabled = true
+            timer.invalidate() // just in case this button is tapped multiple times
+
+            // start the timer
+            
         } else {
             // Empezar a grabar
             grabarAudio?.record()
-
+            counter = 0
             // Cambiar texto del botòn grabar a detener
             grabarButton.setTitle("Detener", for: .normal)
             reproducirButton.isEnabled = false
+            timer.invalidate()
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
         }
     }
     
@@ -83,7 +100,15 @@ class SoundViewController: UIViewController {
         let grabacion = Grabacion(context: context)
         grabacion.nombre = nombreTextField.text
         grabacion.audio = NSData(contentsOf: audioURL!)! as Data
+        grabacion.duracion = duracionTextField.text
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         navigationController!.popViewController(animated: true)
+    }
+
+    // called every time interval from the timer
+    @objc func timerAction() {
+        counter += 1
+        let (h,m,s) = segundosFormato(counter)
+        duracionTextField.text = "\(h):\(m):\(s)"
     }
 }
