@@ -15,9 +15,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="volume" translatesAutoresizingMaskIntoConstraints="NO" id="hx7-Yg-iOt">
+                                <rect key="frame" x="369" y="761" width="45" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="vN1-iy-Ks8"/>
+                                </constraints>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="388-bH-ojt">
                                 <rect key="frame" x="0.0" y="88" width="414" height="678"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <imageView key="tableFooterView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="SaT-na-sfa">
+                                    <rect key="frame" x="0.0" y="111.5" width="414" height="65"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="hrv-yC-JEN" detailTextLabel="O5E-2h-6JJ" style="IBUITableViewCellStyleSubtitle" id="wMt-s0-FqE">
                                         <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
@@ -46,21 +56,35 @@
                                 </prototypes>
                             </tableView>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="La8-ml-LmB">
-                                <rect key="frame" x="8" y="804" width="398" height="30"/>
+                                <rect key="frame" x="8" y="818" width="398" height="30"/>
                                 <connections>
                                     <action selector="volumenChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="ztm-rp-fKC"/>
                                 </connections>
                             </slider>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mute" translatesAutoresizingMaskIntoConstraints="NO" id="Rhv-Ib-6Xv">
+                                <rect key="frame" x="0.0" y="761" width="41" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="41" id="Gtk-bn-Sra"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="hx7-Yg-iOt" firstAttribute="bottom" secondItem="Rhv-Ib-6Xv" secondAttribute="bottom" constant="11" id="0on-SY-HRA"/>
                             <constraint firstItem="La8-ml-LmB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="Cnh-6a-NxB"/>
+                            <constraint firstItem="La8-ml-LmB" firstAttribute="top" secondItem="Rhv-Ib-6Xv" secondAttribute="bottom" constant="8" id="FaZ-T3-WUI"/>
                             <constraint firstItem="388-bH-ojt" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="I3U-mf-1N0"/>
                             <constraint firstAttribute="bottom" secondItem="388-bH-ojt" secondAttribute="bottom" constant="130" id="IaB-NR-XbQ"/>
+                            <constraint firstItem="hx7-Yg-iOt" firstAttribute="top" secondItem="Rhv-Ib-6Xv" secondAttribute="top" id="L1a-z7-w0d"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hx7-Yg-iOt" secondAttribute="bottom" constant="41" id="LeM-ld-exg"/>
+                            <constraint firstItem="Rhv-Ib-6Xv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="OF0-Mp-eU1"/>
                             <constraint firstItem="388-bH-ojt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="OGY-2c-nZJ"/>
                             <constraint firstItem="388-bH-ojt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Syk-yC-AaH"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="La8-ml-LmB" secondAttribute="bottom" constant="29" id="ZAt-Mx-eUp"/>
-                            <constraint firstItem="La8-ml-LmB" firstAttribute="top" secondItem="388-bH-ojt" secondAttribute="bottom" constant="38" id="fw8-ek-wEH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="La8-ml-LmB" secondAttribute="bottom" constant="15" id="ZAt-Mx-eUp"/>
+                            <constraint firstItem="La8-ml-LmB" firstAttribute="top" secondItem="388-bH-ojt" secondAttribute="bottom" constant="52" id="fw8-ek-wEH"/>
+                            <constraint firstItem="La8-ml-LmB" firstAttribute="top" secondItem="hx7-Yg-iOt" secondAttribute="bottom" constant="-3" id="qod-Kk-bti"/>
+                            <constraint firstItem="hx7-Yg-iOt" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="sEd-RQ-GYT"/>
+                            <constraint firstItem="hx7-Yg-iOt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="673" id="tQ7-WT-N0R"/>
                             <constraint firstAttribute="trailing" secondItem="La8-ml-LmB" secondAttribute="trailing" constant="10" id="uec-hx-lZW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -204,6 +228,8 @@
     </scenes>
     <resources>
         <image name="grabar" width="50" height="50"/>
+        <image name="mute" width="50" height="50"/>
         <image name="reproducir" width="50" height="50"/>
+        <image name="volume" width="50" height="50"/>
     </resources>
 </document>

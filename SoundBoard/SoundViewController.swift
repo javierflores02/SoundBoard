@@ -71,9 +71,7 @@ class SoundViewController: UIViewController {
             grabarButton.setTitle("Grabar", for: .normal)
             reproducirButton.isEnabled = true
             agregarButton.isEnabled = true
-            timer.invalidate() // just in case this button is tapped multiple times
-
-            // start the timer
+            timer.invalidate()
             
         } else {
             // Empezar a grabar
@@ -105,7 +103,7 @@ class SoundViewController: UIViewController {
         navigationController!.popViewController(animated: true)
     }
 
-    // called every time interval from the timer
+    // Llamado cada vez que se cumpla con el intervalo del timer
     @objc func timerAction() {
         counter += 1
         let (h,m,s) = segundosFormato(counter)
